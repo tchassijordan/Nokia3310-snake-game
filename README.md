@@ -21,6 +21,7 @@ I used google web font-family ___Bangers___, you can notice
 
 ### How to play
 - Start the game by clicking on the Start/Restart button
+    <br>
     <img src="./images/start-btn.png" alt="start button">
 
 - Control the snake using
