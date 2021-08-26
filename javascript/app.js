@@ -17,7 +17,7 @@ const root = document.querySelector(':root');
 const rootStyle = getComputedStyle(root);
 const animation = rootStyle.getPropertyValue('--animation');
 //second eatApple is the css keyframe
-const eatApple = `eatApple ${speed}ms ease`;
+let eatApple = `eatApple ${speed}ms ease`;
 
 function createGrid() {
     for(let i = 0; i < width * width; i++) {
@@ -42,9 +42,13 @@ function generateSnake() {
 generateSnake();
 
 function startGame() {
-    currentSnake.forEach(index => squares[index].classList.remove('snake'));
+    //remove the old snake and his mouth
+    currentSnake.forEach(index => squares[index].classList.remove('snake', 'mouth'));
+    //remove old apple
     squares[appleIndex].classList.remove('apple');
+    // clear timer
     clearInterval(timer);
+    //initialize game data
     currentSnake = [2,1,0];
     direction = 1;
     score = 0;
@@ -53,6 +57,10 @@ function startGame() {
     generateApple();
     generateSnake();
     timer = setInterval(move, speed);
+    //initialize the mouth to face the right
+    document.documentElement.style.setProperty('--angle', 'rotate(130deg)');
+    // stop snake mouth from closing on first move
+    squares[currentSnake[0]].classList.add('mouth');
 }
 
 
@@ -60,6 +68,7 @@ function move() {
     //remove the mouth from the old heads
     squares[currentSnake[0]].classList.remove('mouth');
 
+    //if snake hits itself or the wall stop movement
     if(
         (currentSnake[0] % width === width - 1 && direction === 1) || 
         (currentSnake[0] % width === 0 && direction === -1) || 
@@ -74,9 +83,10 @@ function move() {
     squares[currentSnake[0] + direction].classList.add('snake');
     currentSnake.unshift(currentSnake[0]+ direction);  
     
-    if(currentSnake[0] === appleIndex) {
+    if(squares[currentSnake[0]].classList.contains('apple')) {
     // alternative if(squares[current[0]].classList.contains('snake'))
         //add eating apple animation to mouth
+        eatApple = `eatApple ${speed}ms ease`;
         document.documentElement.style.setProperty('--animation', eatApple);
         squares[appleIndex].classList.remove('apple');
         score++;
@@ -106,10 +116,13 @@ function move() {
 }
 
 function generateApple() {
+    squares[appleIndex].textContent = '';
     do {
         appleIndex = Math.floor(Math.random() *squares.length) 
     } while (squares[appleIndex].classList.contains('snake'))
-    return squares[appleIndex].classList.add('apple');
+     squares[appleIndex].classList.add('apple');
+    if(squares[appleIndex].classList.contains('apple')) 
+    return squares[appleIndex].textContent = '🍎';
 }
 
 
@@ -132,6 +145,7 @@ function control(e) {
         document.documentElement.style.setProperty('--angle', 'rotate(130deg)');
     }
 }
+
 
 
 
