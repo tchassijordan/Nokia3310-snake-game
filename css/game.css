@@ -14,10 +14,16 @@
 
 body {
     padding: 20px;
-    width: 500px;
+    background-image: linear-gradient(to right, rgba(128, 243, 214, 0.822), rgba(29, 255, 168, 0.651));
+}
+
+.b-container {
     margin: 0 auto;
-    border: 2px solid white;
-    box-shadow: 0px 0px 5px 2px black;
+    width: 90%;
+    max-width: 500px;
+    border: 2px solid #ff723a;
+    box-shadow: 0px 0px 8px 4px black;
+    background-image: linear-gradient(to right, #ff723a, #ffa51d);
 }
 
 h1, h2, h3 {
@@ -32,12 +38,21 @@ h1 {
 }
 
 h3 {
-    text-decoration-line: underline;
     font-size: 22px;
 }
 
+#score-high {
+    text-shadow: 1px 1px rgb(255, 255, 255);
+}
+
 #score {
-    color: var(--pink);
+    color: white;
+    text-shadow: 2px 2px black;
+}
+
+.flex {
+    display: flex;
+    justify-content: space-between;
 }
 
 .container {
@@ -51,6 +66,7 @@ h3 {
     background-color: var(--black);
 }
 
+
 .square {
     width: 20px;
     height: 20px;
@@ -62,16 +78,43 @@ h3 {
 }
 
 .apple {
-    background-color: var(--pink);
+    /* background-color: var(--pink); */
     border-radius: 50%;
+    border: 2.5px solid var(--black);
 }
 
+.col p {
+    font-size: 40px;
+    margin-bottom: 50px;
+    padding: 0 20px;
+}
+
+.btn {
+    display: block;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 1em;
+    border: none;
+    border-radius: 7px;
+    margin: 0 auto;
+    outline: none;
+    letter-spacing: 1px;
+    background: var(--gold);
+    cursor: pointer;
+}
 
 #start-btn {
-    margin: 30px;
-    font-weight: 900;
-    cursor: pointer;
-    box-shadow: 2px 2px 5px 2px var(--pink);
+    text-transform: uppercase;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    box-shadow: 0px 0px 5px 1px var(--black);
+    transition: background-color 250ms;
+}
+
+#start-btn:hover {
+    background-color: var(--black);
+    opacity: 0.7;
+    color: white;
 }
 
 @keyframes eatApple {
