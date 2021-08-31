@@ -127,19 +127,19 @@ function generateApple() {
 
 
 function control(e) {
-    if(e.keyCode === 38) {
+    if(e.key === "ArrowUp" || e.key === "Up") {
         //pressed up
         direction = -width;
         document.documentElement.style.setProperty('--angle', 'rotate(50deg)');
-    } else if(e.keyCode === 40) {
+    } else if(e.key === "ArrowDown" || e.key === "Down") {
         //pressed down
         direction = width;
         document.documentElement.style.setProperty('--angle', 'rotate(220deg)');
-    } else if(e.keyCode === 37) {
+    } else if(e.key === "ArrowLeft" || e.key === "Left") {
         //pressed left
         direction = -1;
         document.documentElement.style.setProperty('--angle', 'rotate(315deg)');
-    } else if(e.keyCode === 39) {
+    } else if(e.key === "ArrowRight" || e.key === "Right") {
         //pressed right
         direction = 1;
         document.documentElement.style.setProperty('--angle', 'rotate(130deg)');

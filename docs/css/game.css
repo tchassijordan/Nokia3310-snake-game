@@ -31,7 +31,7 @@ h1, h2, h3 {
 }
 
 h1 {
-    font-family: 'Bangers', cursive;
+    font-family: 'Ubuntu', cursive;
     color: var(--gold);
     text-shadow: 2px 2px var(--black);
     padding: 10px;
